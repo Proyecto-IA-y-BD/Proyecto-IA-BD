@@ -16,6 +16,17 @@ df = pd.read_csv(path)
 # Revisamos los primeros registros
 df.head(10)
 
+InvoiceNo	StockCode	Description	Quantity	InvoiceDate	UnitPrice	CustomerID	Country
+0	536365	85123A	WHITE HANGING HEART T-LIGHT HOLDER	6	2010-12-01 08:26:00	2.55	17850.0	United Kingdom
+1	536365	71053	WHITE METAL LANTERN	6	2010-12-01 08:26:00	3.39	17850.0	United Kingdom
+2	536365	84406B	CREAM CUPID HEARTS COAT HANGER	8	2010-12-01 08:26:00	2.75	17850.0	United Kingdom
+3	536365	84029G	KNITTED UNION FLAG HOT WATER BOTTLE	6	2010-12-01 08:26:00	3.39	17850.0	United Kingdom
+4	536365	84029E	RED WOOLLY HOTTIE WHITE HEART.	6	2010-12-01 08:26:00	3.39	17850.0	United Kingdom
+5	536365	22752	SET 7 BABUSHKA NESTING BOXES	2	2010-12-01 08:26:00	7.65	17850.0	United Kingdom
+6	536365	21730	GLASS STAR FROSTED T-LIGHT HOLDER	6	2010-12-01 08:26:00	4.25	17850.0	United Kingdom
+7	536366	22633	HAND WARMER UNION JACK	6	2010-12-01 08:28:00	1.85	17850.0	United Kingdom
+8	536366	22632	HAND WARMER RED POLKA DOT	6	2010-12-01 08:28:00	1.85	17850.0	United Kingdom
+9	536367	84879	ASSORTED COLOUR BIRD ORNAMENT	32	2010-12-01 08:34:00	1.69	13047.0	United Kingdom
 
 
 [ ]
@@ -24,6 +35,7 @@ df.columns
 Index(['InvoiceNo', 'StockCode', 'Description', 'Quantity', 'InvoiceDate',
        'UnitPrice', 'CustomerID', 'Country'],
       dtype='object')
+
 
 [ ]
 # Mostrar información sobre las columnas
@@ -66,6 +78,16 @@ print(df.duplicated().sum())
 [ ]
 # Descripción estadística de los datos numéricos
 df.describe()
+
+Quantity	UnitPrice	CustomerID
+count	401604.000000	401604.000000	401604.000000
+mean	13.542995	3.474064	15281.160818
+std	250.213145	69.764035	1714.006089
+min	1.000000	0.000000	12346.000000
+25%	2.000000	1.250000	13939.000000
+50%	6.000000	1.950000	15145.000000
+75%	12.000000	3.750000	16784.000000
+max	80995.000000	38970.000000	18287.0000
 
 
 [ ]
