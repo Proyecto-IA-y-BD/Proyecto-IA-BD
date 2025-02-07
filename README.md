@@ -11,6 +11,9 @@ Instrucciones para usar el proyecto
 1. Clonar el repositorio
 Primero, clona este repositorio en tu máquina local:
 
+git clone https://github.com/Proyecto-IA-y-BD/Proyecto-IA-BD.git
+cd Proyecto-IA-BD
+
 
 
 
