@@ -60,6 +60,31 @@ InvoiceNo	StockCode	Description	Quantity	InvoiceDate	UnitPrice	CustomerID	Countr
 
 
 
+# Preparamos las variables con los datos que vamos a utilizar
+X = df[['Year', 'Month', 'Day', 'DayOfWeek', 'Quantity', 'UnitPrice']] # Variables de entrada
+y = df['TotalSales'] # Variable de salida
+
+
+ # Dividimos los datos en entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+print("Datos divididos en entrenamiento y prueba")
+
+Datos divididos en entrenamiento y prueba
+
+CREACIÓN Y ENTRENAMIENTO DEL MODELO
+
+ model = RandomForestRegressor(n_estimators=100, random_state=42) # Inicializar y entrenar el modelo de RandomForestRegressor
+model.fit(X_train, y_train) # Entrenamos el modelo
+
+y_pred = model.predict(X_test) # Realizar predicciones sobre el conjunto de prueba
+
+print("Modelo entrenado")
+Modelo entrenado
+
+
+      
+ 
+
 
 
 
