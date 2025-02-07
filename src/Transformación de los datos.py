@@ -81,6 +81,15 @@ y_pred = model.predict(X_test) # Realizar predicciones sobre el conjunto de prue
 print("Modelo entrenado")
 Modelo entrenado
 
+# Graficar las predicciones vs los valores reales
+plt.figure(figsize=(10, 6))
+plt.plot(test_data['fecha'], y_test, label='Valores reales', color='blue')
+plt.plot(test_data['fecha'], y_pred, label='Predicciones', color='red', linestyle='--')
+plt.title('Predicción de ventas diarias')
+plt.xlabel('Fecha')
+plt.ylabel('Total de ventas')
+plt.legend()
+plt.show()
 
       
  
