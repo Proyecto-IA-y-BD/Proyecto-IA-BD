@@ -22,3 +22,13 @@ df['CustomerID'] = df['CustomerID'].apply(lambda x: np.random.randint(10000, 999
 
 # Guardar el dataset limpio en un nuevo archivo
 df.to_csv("../data/data_set_clean.csv", index = False)
+
+# Convertimos `InvoiceDate` a formato datetime
+df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
+
+# Creamos columnas para el año, mes, día
+df['Year'] = df['InvoiceDate'].dt.year
+df['Month'] = df['InvoiceDate'].dt.month
+df['Day'] = df['InvoiceDate'].dt.day
+
+df.to_csv("../data/train_data_set.csv", index = False)
