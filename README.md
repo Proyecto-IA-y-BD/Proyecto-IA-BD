@@ -75,14 +75,12 @@ Generate SLSA3 provenance for your existing release workflows
 Jekyll using Docker image logo
 Jekyll using Docker image
 Package a Jekyll site using the jekyll/builder Docker image.
-Python package logo
-Python package
-Create and test a Python package on multiple Python versions.
+Publish Python Package logo
+Publish Python Package
+Publish a Python Package to PyPI on release.
 More workflows
 Footer
-© 2025 GitHub, Inc.
-Footer navigation
-Term
+© 2025 GitHub
 
 
 
