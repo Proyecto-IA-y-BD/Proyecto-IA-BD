@@ -115,7 +115,7 @@ plt.show()
 # Ver las primeras filas del DataFrame con los clusters asignados
 print(df_to_use.head())
 
-# Si sedesea calcular la puntuación de Silhouette para evaluar la calidad de los clusters
+# Si se desea calcular la puntuación de Silhouette para evaluar la calidad de los clusters
 silhouette_avg = silhouette_score(camposUsar_scaled, df_to_use["Cluster"])
 print(f"Puntuación de Silhouette: {silhouette_avg}")
 
