@@ -100,7 +100,6 @@ df_to_use['mediaTicket'] = df_to_use['TotalSales'] / df_to_use['InvoiceNo']
 df_to_use = df_to_use.sort_values('InvoiceNo')
 df_to_use
 
-
 CustomerID 	TotalSales 	InvoiceNo 	mediaTicket 	Cluster
 2362 	16198.0 	400.681 	1 	400.681000 	0
 2365 	16202.0 	301.670 	1 	301.670000 	0
