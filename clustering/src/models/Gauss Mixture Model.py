@@ -77,6 +77,95 @@ df_to_use = df_grouped.groupby(['CustomerID']).agg({
 
 df_to_use
 
+ 	CustomerID 	TotalSales 	InvoiceNo
+0 	12747.0 	1959.01 	11
+1 	12748.0 	24426.58 	214
+2 	12749.0 	3569.70 	8
+3 	12820.0 	942.34 	4
+4 	12821.0 	92.72 	1
+... 	... 	... 	...
+3823 	18280.0 	180.60 	1
+3824 	18281.0 	80.82 	1
+3825 	18282.0 	176.60 	3
+3826 	18283.0 	2045.53 	16
+3827 	18287.0 	1266.74 	3
+
+3828 rows × 3 columns
+
+
+# Calcular la media del ticket (promedio de 'TotalSales' por factura)
+df_to_use['mediaTicket'] = df_to_use['TotalSales'] / df_to_use['InvoiceNo']
+
+# Ordenar por número de facturas
+df_to_use = df_to_use.sort_values('InvoiceNo')
+df_to_use
+
+
+CustomerID 	TotalSales 	InvoiceNo 	mediaTicket 	Cluster
+2362 	16198.0 	400.681 	1 	400.681000 	0
+2365 	16202.0 	301.670 	1 	301.670000 	0
+2367 	16204.0 	384.180 	1 	384.180000 	0
+2370 	16207.0 	394.380 	1 	394.380000 	0
+1220 	14578.0 	154.710 	1 	154.710000 	0
+... 	... 	... 	... 	... 	...
+183 	13089.0 	32120.420 	100 	321.204200 	3
+1730 	15311.0 	13413.560 	113 	118.704071 	3
+1238 	14606.0 	10628.150 	126 	84.350397 	3
+3516 	17841.0 	35070.000 	168 	208.750000 	3
+1 	12748.0 	24426.580 	214 	114.142897 	3
+
+3828 rows × 5 columns
+
+
+camposUsar = df_to_use[['TotalSales', 'InvoiceNo', 'mediaTicket']]
+
+
+# Escalar los datos (opcional pero recomendable para GMM)
+scaler = StandardScaler()
+camposUsar_scaled = scaler.fit_transform(camposUsar)
+
+
+# Aplicar Gaussian Mixture Model (GMM)
+gmm = GaussianMixture(n_components=4, random_state=42)
+df_to_use["Cluster"] = gmm.fit_predict(camposUsar_scaled)  # Añadimos al df la predicción, nº cluster de cada punto
+
+# Visualización de los clusters obtenidos
+sns.pairplot(df_to_use, hue="Cluster", vars=['TotalSales', 'InvoiceNo', 'mediaTicket'], palette='Set1')
+plt.show()
+
+
+
+
+
+
+
+
+
+# Ver las primeras filas del DataFrame con los clusters asignados
+print(df_to_use.head())
+
+# Si deseas calcular la puntuación de Silhouette para evaluar la calidad de los clusters
+silhouette_avg = silhouette_score(camposUsar_scaled, df_to_use["Cluster"])
+print(f"Puntuación de Silhouette: {silhouette_avg}")
+              
+                 CustomerID  TotalSales  InvoiceNo  mediaTicket  Cluster
+3807     18256.0      -50.10          1       -50.10        0
+3806     18255.0      103.30          1       103.30        0
+3803     18249.0       95.34          1        95.34        0
+3801     18246.0       29.50          1        29.50        0
+46       12881.0      103.00          1       103.00        0
+Puntuación de Silhouette: 0.05043589057532897
+
+
+
+
+
+
+
+
+
+
+
 
 
 
